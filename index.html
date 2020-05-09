@@ -1,18 +1,15 @@
-<!doctype html>
-<html>
- <head> 
+<!doctype html><html><head> 
   <meta charset="UTF-8"> 
   <meta name="viewport" content="width=device-width, initial-scale= 1.0" <title>
- </head>
-   <style>
-
-body{
+ <style>
+     
+     
+   </style><style type="text/css" id="dcoder_stylesheet">body{
   display: flex;
   justify-content: center;
   align-items: center;
   background: whitesmoke;
 }
-
 #startPage{
   color: white;
   display: center;
@@ -21,7 +18,6 @@ body{
   background: black;
   border-radius: 5px;
 }
-
 #quizHolder{
   width: 700px;
   max-width: 70%;
@@ -32,11 +28,9 @@ body{
   display: flex;
   text-align: center;
 }
-
 #scoreBoard{
   color: red;
 }
-
 button{
   margin: 5px;
   border-radius: 3px;
@@ -46,7 +40,6 @@ button{
   border: 1px solid black;
   outline: none;
 }
-
 #nextPage{
   margin: 10px;
   border-radius: 10px;
@@ -57,13 +50,11 @@ button{
   width: 150px;
   height: 50px;
 }
-
 #totalScore{
   text-align: center;
   color: white;
-}
-     
-</style>
+}</style></head>
+   
  <body>
    
   <div id="startPage">
@@ -85,9 +76,12 @@ button{
    </div> 
   </div> 
   <div id="totalScore"></div> 
-
-<scipt>
-let startPage = document.getElementById("startPage")
+    <scipt>
+      
+      
+    
+ 
+</scipt><script type="text/javascript" id="dcoder_script">let startPage = document.getElementById("startPage")
 let quizHolder = document.getElementById("quizHolder")
 let scoreBoard = document.getElementById("scoreBoard")
 let question = document.getElementById("question")
@@ -98,7 +92,6 @@ let optionB = document.getElementById("B")
 let optionC = document.getElementById("C")
 let next = document.getElementById("nextPage")
 let totalScore = document.getElementById("totalScore")
-
 
 questions =[{
   question: "What is 3 + 3 x 3 ?",
@@ -132,15 +125,12 @@ questions =[{
   correct: A
 }]
 
-
 let lastQuestion = questions.length;
 let questionNumber = 0
 let score = 0
 let obj //= questions[questionNumber]
 
-
 startPage.addEventListener("click",showQuiz)
-
 
 function showQuiz(){
   startPage.style.display = "none" 
@@ -148,7 +138,6 @@ function showQuiz(){
   nextPage()
   next.addEventListener("click",nextPage)
 }
-
 
 function questionDisplay(){
   obj = questions[questionNumber]
@@ -159,8 +148,6 @@ function questionDisplay(){
   optionC.innerHTML = obj.choiceC
   questionNumber++
 }
-
-
 function nextPage(){
   body.style.background ="black"
   if(questionNumber < lastQuestion){
@@ -170,7 +157,6 @@ function nextPage(){
     totalMark()
   }
 }
-
   
 function is_correct(choice){
   if (choice === obj.correct){
@@ -182,13 +168,10 @@ function is_correct(choice){
   }
 }
 
-
 function correct_answer_display(){
   body.style.backgroundColor = "green"
  // option.style.color = "white"
 }
-
-
 function wrong_answer_display(){
   body.style.backgroundColor = "red"
 //  option.style.font = "white"
@@ -198,8 +181,4 @@ function totalMark(){
   quizHolder.style.display = "none"
   totalScore.style.display = "block"
   totalScore.innerHTML = "<p> Your total score is "+ score +"</p"
-}
-      
-    </script>
- </body>
-</html>
+}</script></body></html>
