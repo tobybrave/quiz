@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale= 1.0" <title>
+ </head>
+   <style>
+    body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: whitesmoke;
+}
+#startPage{
+  color: white;
+  display: center;
+  justify-content: center;
+  align-items: center;
+  background: black;
+  border-radius: 5px;
+}
+#quizHolder{
+  width: 700px;
+  max-width: 70%;
+  padding: 10px;
+  justify-content: center;
+  border-radius: 10px;
+  background: white;
+  display: flex;
+  text-align: center;
+}
+#scoreBoard{
+  color: red;
+}
+button{
+  margin: 5px;
+  border-radius: 3px;
+  background: aquamarine;
+  width: 70px;
+  height: 40px;
+  border: 1px solid black;
+  outline: none;
+}
+#nextPage{
+  margin: 10px;
+  border-radius: 10px;
+  background: aquamarine;
+  text-align: center;
+  border: none;
+  outline: none;
+  width: 150px;
+  height: 50px;
+}
+#totalScore{
+  text-align: center;
+  color: white;
+}
+     
+   </style>
+ <body>
+   
+  <div id="startPage">
+   <h3>Start Quiz</h3>
+  </div> 
+  <div id="quizHolder" style="display: none"> 
+   <div id="scoreBoard">
+     0 out of 5
+   </div> 
+   <div id="question">
+    Question 
+   </div> 
+   <div class="options"> 
+    <button class="option" id="A" onclick="is_correct(A)"></button> 
+    <button class="option" id="B" onclick="is_correct(B)"></button> 
+    <button class="option" id="C" onclick="is_correct(C)"></button> 
+    <br> 
+    <button id="nextPage"><h5>Next</h5> </button> 
+   </div> 
+  </div> 
+  <div id="totalScore"></div> 
+    <scipt>
+      let startPage = document.getElementById("startPage")
+let quizHolder = document.getElementById("quizHolder")
+let scoreBoard = document.getElementById("scoreBoard")
+let question = document.getElementById("question")
+let body = document.querySelector("body")
+let option = document.querySelector(".option")
+let optionA = document.getElementById("A")
+let optionB = document.getElementById("B")
+let optionC = document.getElementById("C")
+let next = document.getElementById("nextPage")
+let totalScore = document.getElementById("totalScore")
+
+questions =[{
+  question: "What is 3 + 3 x 3 ?",
+  choiceA: 27,
+  choiceB: 18,
+  choiceC: 12,
+  correct: C
+},{
+  question: "How many colors are in the Nigeria flag ?",
+  choiceA: 3,
+  choiceB: 2,
+  choiceC: 4,
+  correct: B
+},{
+  question: "Choose the correct option",
+  choiceA: "Febraury",
+  choiceB: "February",
+  choiceC: "Feburary",
+  correct: B
+},{
+  question: "When did the 21st century start ?",
+  choiceA: 1999,
+  choiceB: 2000,
+  choiceC: 2001,
+  correct: C
+},{
+  question: "Zero divided by zero is equal to __",
+  choiceA: "undefined",
+  choiceB: "infinity",
+  choiceC: "zero",
+  correct: A
+}]
+
+let lastQuestion = questions.length;
+let questionNumber = 0
+let score = 0
+let obj //= questions[questionNumber]
+
+startPage.addEventListener("click",showQuiz)
+
+function showQuiz(){
+  startPage.style.display = "none" 
+  quizHolder.style.display = "block"
+  nextPage()
+  next.addEventListener("click",nextPage)
+}
+
+function questionDisplay(){
+  obj = questions[questionNumber]
+  scoreBoard.innerHTML = "<p>"+ score+" out of " +questions.length +" answered correctly</p>"
+  question.innerHTML = "<p><h3>"+ obj.question +"</h3> </p>"
+  optionA.innerHTML = obj.choiceA 
+  optionB.innerHTML = obj.choiceB
+  optionC.innerHTML = obj.choiceC
+  questionNumber++
+}
+function nextPage(){
+  body.style.background ="black"
+  if(questionNumber < lastQuestion){
+    questionDisplay()
+  }
+  else{
+    totalMark()
+  }
+}
+  
+function is_correct(choice){
+  if (choice === obj.correct){
+    score++;
+    correct_answer_display()
+  }
+  else{
+    wrong_answer_display();
+  }
+}
+
+function correct_answer_display(){
+  body.style.backgroundColor = "green"
+ // option.style.color = "white"
+}
+function wrong_answer_display(){
+  body.style.backgroundColor = "red"
+//  option.style.font = "white"
+}
+
+function totalMark(){
+  quizHolder.style.display = "none"
+  totalScore.style.display = "block"
+  totalScore.innerHTML = "<p> Your total score is "+ score +"</p"
+}
+      
+    </script>
+ </body>
+</html>
